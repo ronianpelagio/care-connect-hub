@@ -21,13 +21,13 @@ export default function Landing() {
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Activity className="h-7 w-7 text-primary" />
-            <span className="font-display text-xl font-bold text-foreground">EConsultCare</span>
+            <span className="font-display text-xl font-bold text-foreground">EConsultCare+</span>
           </div>
           <div className="flex items-center gap-3">
-            <Link to="/dashboard">
+            <Link to="/auth">
               <Button variant="ghost" size="sm">Sign In</Button>
             </Link>
-            <Link to="/dashboard">
+            <Link to="/auth">
               <Button size="sm" className="gradient-primary border-0 text-primary-foreground">
                 Get Started
               </Button>
@@ -56,7 +56,7 @@ export default function Landing() {
                 Schedule consultations, receive digital prescriptions, and order medicine — all from one secure platform.
               </p>
               <div className="mt-8 flex gap-4">
-                <Link to="/dashboard">
+                <Link to="/auth">
                   <Button size="lg" className="gradient-primary border-0 text-primary-foreground gap-2">
                     Enter Portal <ArrowRight className="h-4 w-4" />
                   </Button>
@@ -116,9 +116,9 @@ export default function Landing() {
         <div className="container flex flex-col items-center justify-between gap-4 sm:flex-row">
           <div className="flex items-center gap-2">
             <Activity className="h-5 w-5 text-primary" />
-            <span className="font-display text-sm font-semibold text-foreground">EConsultCare</span>
+            <span className="font-display text-sm font-semibold text-foreground">EConsultCare+</span>
           </div>
-          <p className="text-xs text-muted-foreground">© 2026 EConsultCare. All rights reserved.</p>
+          <p className="text-xs text-muted-foreground">© 2026 EConsultCare+. All rights reserved.</p>
         </div>
       </footer>
     </div>

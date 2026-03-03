@@ -12,22 +12,28 @@ import {
   Menu,
   X,
   Activity,
+  Brain,
+  BarChart3,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/hooks/useAuth";
 
 const navItems = [
   { label: "Dashboard", icon: LayoutDashboard, path: "/dashboard" },
+  { label: "AI Triage", icon: Brain, path: "/triage" },
   { label: "Schedule", icon: CalendarPlus, path: "/schedule" },
   { label: "Consultations", icon: Video, path: "/consultations" },
   { label: "Prescriptions", icon: FileText, path: "/prescriptions" },
   { label: "Pharmacy", icon: Pill, path: "/pharmacy" },
   { label: "Medical Records", icon: ClipboardList, path: "/records" },
+  { label: "Analytics", icon: BarChart3, path: "/admin" },
   { label: "Profile", icon: User, path: "/profile" },
 ];
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { user, signOut } = useAuth();
 
   return (
     <div className="flex h-screen overflow-hidden bg-background">
@@ -49,7 +55,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="flex h-16 items-center gap-2 px-6">
           <Activity className="h-7 w-7 text-sidebar-primary" />
           <span className="font-display text-lg font-bold text-sidebar-foreground">
-            EConsultCare
+            EConsultCare+
           </span>
         </div>
 
@@ -76,13 +82,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </nav>
 
         <div className="border-t border-sidebar-border p-3">
-          <Link
-            to="/"
-            className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-sidebar-foreground/70 transition-colors hover:bg-sidebar-accent hover:text-sidebar-foreground"
+          <button
+            onClick={async () => { await signOut(); window.location.href = "/"; }}
+            className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-sidebar-foreground/70 transition-colors hover:bg-sidebar-accent hover:text-sidebar-foreground"
           >
             <LogOut className="h-5 w-5" />
             Sign Out
-          </Link>
+          </button>
         </div>
       </aside>
 
@@ -100,7 +106,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <div className="h-8 w-8 rounded-full gradient-primary flex items-center justify-center text-xs font-bold text-primary-foreground">
               JP
             </div>
-            <span className="hidden text-sm font-medium sm:block">Juan Dela Cruz</span>
+            <span className="hidden text-sm font-medium sm:block">{user?.email?.split("@")[0] || "User"}</span>
           </div>
         </header>
 

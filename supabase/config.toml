@@ -1,0 +1,4 @@
+project_id = "hbkojmkipxghvwlgsnnk"
+
+[functions.ai-triage]
+verify_jwt = false
